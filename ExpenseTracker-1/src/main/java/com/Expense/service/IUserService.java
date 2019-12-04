@@ -1,18 +1,27 @@
 package com.Expense.service;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.http.ResponseEntity;
+
+import com.Expense.dto.UserDto;
+import com.Expense.model.Category;
 import com.Expense.model.User;
 
 public interface IUserService {
 
-	//String resgisterUser(User user);
+	User loginUser(String emailId, String password);
+
+	List<User> usersList();
 
 	String resgisterUser(User user);
-
-	//User loginUser(String emailId, String password);
+	
+	User getUserById(int userId);
 
 	
 
-	User loginUser(String emailId, String password);
-	User getUserById(Integer userId );
+	
+	
 
 }

@@ -7,8 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.Expense.dao.IExpenseDao;
 import com.Expense.dao.IUserDao;
+import com.Expense.dto.ExpenseDto;
 import com.Expense.model.Expense;
-import com.Expense.model.User;
+import com.Expense.repository.ExpenseRepository;
 
 @Service
 public class ExpenseServiceImpl implements IExpenseService {
@@ -18,34 +19,41 @@ public class ExpenseServiceImpl implements IExpenseService {
 
 	@Autowired
 	private IUserDao userDao;
-	
-	
-	
 
-	@Override
-	public String addExpense(Expense expense) {
-
-	/*User user = userDao.getUserByID(expense.getUser().getUserId());
-		expense.setUser(user);
-		System.out.println("in service");
-		*/
-		return dao.addExpense(expense);
-	
-		// TODO Auto-generated method stub
-		//
-//return dao.addExpense(expense);
-	}
-
-	@Override
-	public List<Object> getListOfExpenses() {
-		// TODO Auto-generated method stub
-		return dao.getListOfExpenses();
-	}
+	@Autowired
+	private ExpenseRepository expenseRepository;
 
 	@Override
 	public List<Expense> getAllExpenses() {
-		// TODO Auto-generated method stub
+		
 		return dao.getAllExpenses();
+	}
+
+	@Override
+	public String addExpense(ExpenseDto expensedto) {
+		Expense exp = new Expense();
+
+		exp.setExpenseId(expensedto.getExpenseId());
+		exp.setExpenseName(expensedto.getExpenseName());
+		exp.setExpensedate(expensedto.getExpensedate());
+		exp.setExpense_amount(expensedto.getExpense_amount());
+		
+		expenseRepository.save(exp);
+
+		return "Expense added";
+
+	}
+
+	@Override
+	public Double sumOfallExpense() {
+		
+		return dao.sumOfallExpense();
+	}
+
+	@Override
+	public List<Object[]> getListOfExpensesmonthWise() {
+		
+		return expenseRepository.findBYMonth();
 	}
 
 }

@@ -9,6 +9,5 @@ public interface ICategoryDao {
 	String addCategory(Category category);
 
 	List<Category> getAllCategories();
-	
 
 }

@@ -4,16 +4,18 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
 import com.Expense.model.Category;
 
-
 @Repository
 @Transactional
-public class CategoryDaoImpl  implements ICategoryDao{
+public class CategoryDaoImpl implements ICategoryDao {
 	@PersistenceContext
 	private EntityManager entitytManager;
 
@@ -25,11 +27,15 @@ public class CategoryDaoImpl  implements ICategoryDao{
 
 	@Override
 	public List<Category> getAllCategories() {
-		
-		String jpql = "select c from Category c";
-		return entitytManager.createQuery(jpql,Category.class).getResultList();
-		// TODO Auto-generated method stub
-		
+
+		CriteriaBuilder criteriaBuilder = entitytManager.getCriteriaBuilder();
+		CriteriaQuery<Category> criteriaQuery = criteriaBuilder.createQuery(Category.class);
+		Root<Category> root = criteriaQuery.from(Category.class);
+		criteriaQuery.select(root);
+
+		return entitytManager.createQuery(criteriaQuery).getResultList();
 	}
+
+	
 
 }

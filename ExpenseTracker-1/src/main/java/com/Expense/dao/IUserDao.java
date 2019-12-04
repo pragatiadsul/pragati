@@ -1,5 +1,7 @@
 package com.Expense.dao;
 
+import java.util.List;
+
 import com.Expense.model.User;
 
 public interface IUserDao {
@@ -7,10 +9,7 @@ public interface IUserDao {
 	String registerUser(User user);
 
 	User loginUser(String emailId, String password);
-	
-	public User getUserByID(int userId);
 
-	User getUserById(Integer userId);
+	List<User> getusersList();
 
 }
-
