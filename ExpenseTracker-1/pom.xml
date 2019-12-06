@@ -46,14 +46,14 @@
 			<version>2.1</version>
 		</dependency>
 		<!-- Swagger End -->
-		
+
 		<!-- Flyway -->
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 		</dependency>
-		<!--  Flyway End -->
-		
+		<!-- Flyway End -->
+
 		<!-- mail -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -63,8 +63,8 @@
 			<groupId>it.ozimov</groupId>
 			<artifactId>spring-boot-email-core</artifactId>
 			<version>0.6.3</version>
-			
-			<!-- mail End-->
+
+			<!-- mail End -->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -74,7 +74,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		
+
 		<!-- devtools -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -86,7 +86,7 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!-- JUnit Test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -99,7 +99,22 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!--End  JUnit Test -->
+		<!--End JUnit Test -->
+		<!-- https://mvnrepository.com/artifact/org.powermock/powermock-module-junit4 -->
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>2.0.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito2</artifactId>
+			<version>2.0.4</version>
+			<scope>test</scope>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -108,18 +123,14 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
-			
-		
-		
-		
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.19.1</version>
-        </plugin>
-  </plugins>
-		
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+			</plugin>
+		</plugins>
+
 	</build>
 
 </project>

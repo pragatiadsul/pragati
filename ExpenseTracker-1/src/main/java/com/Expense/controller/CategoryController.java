@@ -22,7 +22,7 @@ import com.Expense.service.ICategoryService;
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
-	
+
 	@Autowired
 	private ICategoryService categoryService;
 
@@ -65,6 +65,21 @@ public class CategoryController {
 			return ResponseEntity.notFound().build();
 
 		return ResponseEntity.ok().body(category);
+	}
+
+	
+	
+	/**
+	 * Method used to fetch specific category name
+	 * 
+	 * @param category object
+	 * @return category
+	 */
+	@PostMapping("/categoryName")
+	private Category getCategoryBYName(@RequestBody Category category) {
+
+		String name = category.getCategory();
+		return categoryService.FindByCategory(name);
 	}
 
 }

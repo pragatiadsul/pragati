@@ -14,17 +14,15 @@ import com.Expense.repository.CategoryRepository;
 @Service
 public class CategoryServiceImpl implements ICategoryService {
 
-
 	@Autowired
 	private CategoryRepository categoryRepository;
 
 	@Autowired
 	private ICategoryDao dao;
 
-	
 	@Override
 	public List<Category> getAllCategories() {
-	
+
 		return categoryRepository.findAll();
 	}
 
@@ -41,9 +39,17 @@ public class CategoryServiceImpl implements ICategoryService {
 
 	@Override
 	public Category getCategoryById(int categoryId) {
-		
+
 		return categoryRepository.findByCategoryId(categoryId);
 	}
-	
 
+	@Override
+	public Category FindByCategory(String name) {
+		return categoryRepository.findByCategory(name);
+	}
+
+	public static String getStatus()
+	{
+		return "Mocked";
+	}
 }

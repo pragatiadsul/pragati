@@ -52,6 +52,8 @@ public class CategoryController {
 ResponseEntity<?> getCategory(@PathVariable Long id)
 {
 	Optional<Category> category=categoryRepository.findById(id);
+	
+	
 	return category.map(response -> ResponseEntity.ok(response))
 			.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	
@@ -77,5 +79,7 @@ ResponseEntity<?> deleteCategory(@PathVariable Long id)
 	categoryRepository.deleteById(id);
 	return ResponseEntity.ok().build();
 }
+
+
 
 }

@@ -5,6 +5,8 @@ package com.app.demo.model;
 import java.time.Instant;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -24,9 +26,11 @@ import lombok.NoArgsConstructor;
 public class Expense
 {
 	@Id
+	@GeneratedValue(strategy =GenerationType.AUTO)
 	private Long id;
 	private Instant expensedate;
-	private String descript;
+	private float amount;
+	
 	
 	@ManyToOne
 	private Category category;
@@ -34,6 +38,7 @@ public class Expense
 	//@JsonIgnore
 	@ManyToOne
 	private Users user;
+	
 	public Long getId() {
 		return id;
 	}
@@ -46,12 +51,7 @@ public class Expense
 	public void setExpensedate(Instant expensedate) {
 		this.expensedate = expensedate;
 	}
-	public String getDescript() {
-		return descript;
-	}
-	public void setDescript(String descript) {
-		this.descript = descript;
-	}
+	
 	public Category getCategory() {
 		return category;
 	}
@@ -64,21 +64,24 @@ public class Expense
 	public void setUser(Users user) {
 		this.user = user;
 	}
-	public Expense(Long id, Instant expensedate, String descript, Category category, Users user) {
+	public float getAmount() {
+		return amount;
+	}
+	public void setAmount(float amount) {
+		this.amount = amount;
+	}
+	public Expense(Long id, Instant expensedate, float amount, Category category, Users user) {
 		super();
 		this.id = id;
 		this.expensedate = expensedate;
-		this.descript = descript;
+		this.amount = amount;
 		this.category = category;
 		this.user = user;
 	}
 	@Override
 	public String toString() {
-		return "Expense [id=" + id + ", expensedate=" + expensedate + ", descript=" + descript + ", category="
-				+ category + ", user=" + user + "]";
-	}
-	public Expense() {
-		super();
+		return "Expense [id=" + id + ", expensedate=" + expensedate + ", amount=" + amount + ", category=" + category
+				+ ", user=" + user + "]";
 	}
 	
 	

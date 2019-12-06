@@ -31,9 +31,11 @@ import lombok.NoArgsConstructor;
 public class Users {
 
 	@Id
+	@GeneratedValue(strategy =GenerationType.AUTO)
 	private Long id;
 	private String name;
 	private String email;
+	private String password;
 	public Long getId() {
 		return id;
 	}
@@ -52,9 +54,29 @@ public class Users {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public Users(Long id, String name, String email, String password) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", name=" + name + ", email=" + email + "]";
+		return "Users [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
+	}
+	public Users() {
+		super();
+	}
+	
+	
+	
 	}
 	
 	
@@ -62,4 +84,3 @@ public class Users {
 /*	@OneToMany
 	private Set<Category> category;
 	*/
-}

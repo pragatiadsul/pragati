@@ -7,6 +7,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,5 +48,11 @@ ResponseEntity<Expense> createExpense(@Valid @RequestBody Expense expense) throw
 Expense result= expenseRepository.save(expense);
 return ResponseEntity.created(new URI("/api/expenses" + result.getId())).body(result);
 }
+
+/*
+@GetMapping("/getMonthyExpense")
+public ResponseEntity<List<Object>> getListOfExpenses (){
+	return new ResponseEntity.ok().body(expenseRepository.findAll());
+}*/
 
 }
